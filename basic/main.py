@@ -1,5 +1,6 @@
 
 import json
+import os
 
 
 with open("level_1_character.json", "r") as file:
