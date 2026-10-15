@@ -26,7 +26,7 @@ print("Updated character saved to level_2_character.json")
 
 
 
-# Ask for the current character level
+
 while True:
     try:
         current_level = int(input("Enter the character's current level: "))
@@ -46,7 +46,7 @@ while True:
     except ValueError:
         print("Invalid input. Enter a whole number.")
 
-# Load the character
+
 try:
     with open(input_file, "r") as file:
         character = json.load(file)
@@ -69,7 +69,7 @@ try:
     if not isinstance(character["weapons"], list):
         raise ValueError("Weapons must be a list.")
 
-    # Define the six possible attributes
+
     attributes = [
         "strength",
         "dexterity",
@@ -79,16 +79,16 @@ try:
         "charisma"
     ]
 
-    # Check that the attributes exist
+
     for attribute in attributes:
         if attribute not in character["attributes"]:
             raise ValueError(f"Missing attribute: {attribute}")
 
-    # Increase level and armor class
+
     character["level"] += 1
     character["armor_class"] += 1
 
-    # Ask which attribute to improve
+
     while True:
         print("Available attributes:", ", ".join(attributes))
         chosen_attribute = input(
@@ -101,7 +101,7 @@ try:
 
         print("Invalid attribute. Choose one from the list.")
 
-    # Add a new skill
+
     while True:
         skill = input("Enter a new skill: ").strip()
 
@@ -111,7 +111,7 @@ try:
 
         print("Skill cannot be empty.")
 
-    # Ask whether to add a weapon
+
     while True:
         answer = input("Add a new weapon? (yes/no): ").strip().lower()
 
@@ -130,7 +130,6 @@ try:
 
             print("Weapon name cannot be empty.")
 
-    # Save using the new character level
     new_level = character["level"]
     output_file = f"level_{new_level}_character.json"
 
